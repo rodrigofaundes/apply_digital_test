@@ -12,10 +12,6 @@ export class ProductsService {
     private readonly productRepository: Repository<Product>,
 ) {}
 
-  findAll() {
-    return "this.productRepository.find({where: {deleted: false}})"
-  }
-
   async findOne(id: string) {
     const product =  await this.productRepository.findOne({
       where: { id, deleted: false },
