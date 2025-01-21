@@ -1,20 +1,11 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete, ParseUUIDPipe, Query } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { FindProductDto } from './dto/find-product.dto';
+import { PaginatedProductDto } from './dto/paginated-product.dto';
 
 @Controller('products')
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
-
-  @Get()
-  findAll() {
-    return this.productsService.findAll();
-  }
-
-  @Get('find/:id')
-  findOne(@Param() params: FindProductDto) {
-    return this.productsService.findOne(params.id);
-  }
 
   @Delete(':id')
   remove(@Param() params: FindProductDto) {
@@ -22,22 +13,16 @@ export class ProductsController {
   }
 
   @Get("/paginated")
-  async paginated(
-    @Query('page') page = 1,
-    @Query('name') name?: string,
-    @Query('category') category?: string,
-    @Query('minPrice') minPrice?: string,
-    @Query('maxPrice') maxPrice?: string,
-  ) {
+  async paginated( @Query() params: PaginatedProductDto  ) {
 
-	const minPriceNum = minPrice ? parseFloat(minPrice) : undefined;
-	const maxPriceNum = maxPrice ? parseFloat(maxPrice) : undefined;
+	const minPriceNum = params.minPrice
+	const maxPriceNum = params.maxPrice
 	const take = 5;
-	const skip = (page - 1) * take;
+	const skip = (params.page - 1) * take;
 	let where: any = { deleted: false };
 
-	if (name) where.name = name;
-	if (category) where.category = category;
+	if (params.name) where.name = params.name;
+	if (params.category) where.category = params.category;
 
 	const [items, total] = await this.productsService.paginate(where, skip, take, {
 	  minPriceNum,
@@ -45,7 +30,7 @@ export class ProductsController {
 	});
 
 	return {
-	  page,
+	  params,
 	  total,
 	  items
 	}
