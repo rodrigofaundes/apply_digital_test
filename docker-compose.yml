@@ -25,5 +25,6 @@ services:
       - /usr/src/app/node_modules
     command: npm run start:dev
 
+
 volumes:
   db_data:
