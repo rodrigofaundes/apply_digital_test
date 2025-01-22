@@ -1,22 +1,24 @@
-import { IsDecimal, IsNumber, isNumber, IsNumberString, IsOptional, IsPositive, IsString } from "class-validator";
+import { Type } from "class-transformer";
+import { IsDecimal, IsNumberString, IsOptional, IsPositive } from "class-validator";
 
 export class PaginatedProductDto {
     
     @IsNumberString()
-    page: number;
+    @IsOptional()
+    page?: number;
     
     @IsOptional()
-    name: string
+    name?: string
 
     @IsOptional()
-    category: string
-
-    @IsOptional()
-    @IsDecimal()
-    minPrice: number
+    category?: string
 
     @IsOptional()
     @IsDecimal()
-    maxPrice: number
+    minPrice?: number
+
+    @IsOptional()
+    @IsDecimal()
+    maxPrice?: number
     
 }
