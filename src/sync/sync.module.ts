@@ -6,13 +6,13 @@ import { SyncService } from './sync.service';
 import { SyncController } from './sync.controller';
 
 @Module({
-  imports: [
-      HttpModule,
-      TypeOrmModule.forFeature([Product]),
-  ],
-  providers: [SyncService],
-  exports: [SyncService],
-  controllers: [SyncController]
+    imports: [
+        HttpModule,
+        TypeOrmModule.forFeature([Product])
+    ],
+    providers: [SyncService],
+    exports: [SyncService],
+    controllers: [SyncController]
 })
 
 export class SyncModule {}
