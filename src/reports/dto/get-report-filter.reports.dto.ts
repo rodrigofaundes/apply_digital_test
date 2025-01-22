@@ -4,14 +4,14 @@ export class GetReportByFiltersDto {
     @IsString()
     @IsDateString()
     @IsOptional()
-    fromDate: string;
+    fromDate?: string;
     
     @IsString()
     @IsDateString()
     @IsOptional()
-    toDate: string;
+    toDate?: string;
     
     @IsDecimal()
     @IsOptional()
-    price: number;
+    price?: number;
 }
