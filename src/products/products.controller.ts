@@ -1,18 +1,10 @@
-import {
-    Controller,
-    Get,
-    Post,
-    Body,
-    Patch,
-    Param,
-    Delete,
-    ParseUUIDPipe,
-    Query
-} from '@nestjs/common';
+import { Controller, Get, Param, Delete, Query } from '@nestjs/common';
 import {ProductsService} from './products.service';
 import {FindProductDto} from './dto/find-product.dto';
 import {PaginatedProductDto} from './dto/paginated-product.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('products')
 @Controller('products')
 export class ProductsController {
     constructor(private readonly productsService : ProductsService) {}
