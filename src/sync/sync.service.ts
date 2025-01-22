@@ -1,12 +1,14 @@
+import {lastValueFrom} from 'rxjs';
+import {Repository} from 'typeorm';
+
 import {HttpService} from '@nestjs/axios';
 import {Injectable} from '@nestjs/common';
 import {ConfigService} from '@nestjs/config';
 import {InjectRepository} from '@nestjs/typeorm';
-import {lastValueFrom} from 'rxjs';
-import {Product} from '../products/entities/product.entity';
-import {Repository} from 'typeorm';
-import {ContentfulResponse} from './interfaces/contentfil-response.interface';
 import {Cron, CronExpression} from '@nestjs/schedule';
+
+import {Product} from '../products/entities/product.entity';
+import {ContentfulResponse} from './interfaces/contentfil-response.interface';
 import {CreateProductDto} from '../products/dto/create-product.dto';
 
 @Injectable()
