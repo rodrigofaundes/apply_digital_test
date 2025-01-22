@@ -50,11 +50,9 @@ export class ReportsService {
         const total = await this
             .productRepository
             .count();
-        const filteredCount = await query.getCount();
 
-        const percentage = total === 0
-            ? 0
-            : (filteredCount / total) * 100;
+            const filteredCount = await query.getCount();
+        const percentage = total === 0 ? 0 : (filteredCount / total) * 100;
 
         return {total, filteredCount, percentage}
     }

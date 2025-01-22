@@ -2,6 +2,7 @@ import {Test, TestingModule} from '@nestjs/testing';
 import {ReportsController} from '../reports.controller';
 import {ReportsService} from '../reports.service';
 import {GetReportByFiltersDto} from '../dto/get-report-filter.reports.dto';
+import {JwtAuthGuard} from '../../auth/jwt-auth.guard';
 
 describe('ReportsController', () => {
     let controller: ReportsController;
@@ -22,6 +23,10 @@ describe('ReportsController', () => {
                         useValue: mockReportsService
                     }
                 ]
+            })
+            .overrideGuard(JwtAuthGuard)
+            .useValue({
+                canActivate: () => true,
             })
             .compile();
 

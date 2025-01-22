@@ -1,10 +1,13 @@
 import { Module } from '@nestjs/common';
-import { ProductsModule } from './products/products.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { SyncModule } from './sync/sync.module';
 import { ScheduleModule } from '@nestjs/schedule';
+
+import { ProductsModule } from './products/products.module';
+import { SyncModule } from './sync/sync.module';
 import { ReportsModule } from './reports/reports.module';
+import { AuthModule } from './auth/auth.module';
+import { SeedModule } from './seed/seed.module';
 
 @Module({
     imports: [
@@ -27,7 +30,9 @@ import { ReportsModule } from './reports/reports.module';
         ProductsModule,
         SyncModule,
         ScheduleModule.forRoot(),
-        ReportsModule
+        ReportsModule,
+        AuthModule,
+        SeedModule
     ],
     controllers: [],
     providers: []
