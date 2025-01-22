@@ -1,0 +1,34 @@
+name: Apply Digital Workflow
+
+on:
+  push:
+    branches: [ "main", "develop" ]
+  pull_request:
+    branches: [ "main", "develop" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout tu código
+      - name: Check out repo
+        uses: actions/checkout@v3
+
+      # 2. Usa Node LTS (por ejemplo, 18)
+      - name: Use Node.js 22
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      # 3. Instalar dependencias
+      - name: Install dependencies
+        run: npm install
+
+      # 4. Ejecutar linter (por ejemplo, ESLint)
+      - name: Lint
+        run: npm run lint
+
+      # 5. Ejecutar tests (y coverage si deseas)
+      - name: Test
+        run: npm run test:cov
