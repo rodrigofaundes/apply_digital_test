@@ -32,7 +32,7 @@ export class AuthService {
     }
 
     async login(loginAuthDto: LoginAuthDto) {
-        const userExist = await this.findOne(loginAuthDto)
+        await this.findOne(loginAuthDto)
         const payload = { username: loginAuthDto.email, sub: loginAuthDto.password };
         return {
             access_token: this.jwtService.sign(payload),
