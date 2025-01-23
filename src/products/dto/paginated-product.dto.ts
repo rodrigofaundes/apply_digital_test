@@ -1,4 +1,4 @@
-import { IsDecimal, IsNumberString, IsOptional } from "class-validator";
+import { IsBoolean, IsBooleanString, IsNumberString, IsOptional } from "class-validator";
 
 export class PaginatedProductDto {
     
@@ -13,11 +13,6 @@ export class PaginatedProductDto {
     category?: string
 
     @IsOptional()
-    @IsDecimal()
-    minPrice?: number
-
-    @IsOptional()
-    @IsDecimal()
-    maxPrice?: number
-    
+    @IsBooleanString()
+    price?: string    
 }
