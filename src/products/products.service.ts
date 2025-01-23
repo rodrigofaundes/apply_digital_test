@@ -1,8 +1,10 @@
-import {Injectable, NotFoundException, ParseUUIDPipe} from '@nestjs/common';
-import {InjectRepository} from '@nestjs/typeorm';
-import {Product} from './entities/product.entity';
 import {Repository} from 'typeorm';
-import { PaginatedProductDto } from './dto/paginated-product.dto';
+
+import {Injectable, NotFoundException} from '@nestjs/common';
+import {InjectRepository} from '@nestjs/typeorm';
+
+import {Product} from './entities/product.entity';
+import {PaginatedProductDto} from './dto/paginated-product.dto';
 
 @Injectable()
 export class ProductsService {

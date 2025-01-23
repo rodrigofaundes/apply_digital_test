@@ -1,5 +1,4 @@
-import { Type } from "class-transformer";
-import { IsDecimal, IsNumberString, IsOptional, IsPositive } from "class-validator";
+import { IsDecimal, IsNumberString, IsOptional } from "class-validator";
 
 export class PaginatedProductDto {
     
