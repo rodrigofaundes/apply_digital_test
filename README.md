@@ -44,6 +44,12 @@ CONTENTFUL_CONTENT_TYPE=product
 JWT_SECRET=mysecretkey
 ```
 
+# Credentials for login and get JWT
+```
+email:      rodrigofaundes@applydigital.com",
+password:   ApplyTest@123"
+```
+
 ## Compile and run the project
 
 ```bash
