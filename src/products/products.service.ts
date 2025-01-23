@@ -39,7 +39,7 @@ export class ProductsService {
     async findAll(paginatedProductDto: PaginatedProductDto) {
         const { page = 1, name, category, minPrice, maxPrice } = paginatedProductDto
         const take = 5;
-        const offset = page * take;
+        const offset = ( page - 1 ) * take;
 
         const query = this
             .productRepository
