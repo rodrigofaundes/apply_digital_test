@@ -63,9 +63,16 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## API dndpoint documentation
+
+```bash
+http://localhost:3000/api/docs
+```
+
 ## Run SEED
 After you build and start the project you need to run seed to populate the database.
-In postman you need to run this URL
+In postman you need to run this URL.
+That endpoint fill the users and products table.
 ```
 http://localhost:3000/seed/
 ```
