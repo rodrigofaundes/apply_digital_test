@@ -55,8 +55,7 @@ describe('ProductsController', () => {
                     page: 2,
                     name: 'apple',
                     category: 'Smartwatch',
-                    minPrice: 100,
-                    maxPrice: 300
+                    price: "true"
                 };
 
                 // Simulamos que el service.findAll retorna [page, offset, items, total]

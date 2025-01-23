@@ -37,7 +37,7 @@ export class ProductsService {
     }
 
     async findAll(paginatedProductDto: PaginatedProductDto) {
-        const { page = 1, name, category, minPrice, maxPrice } = paginatedProductDto
+        const { page = 1, name, category, price } = paginatedProductDto
         const take = 5;
         const offset = ( page - 1 ) * take;
 
@@ -56,18 +56,10 @@ export class ProductsService {
             query.andWhere('product.category = :category', {category: category});
         }
 
-        if (minPrice) {
-            query.andWhere(
-                'product.price >= :minPrice',
-                {minPrice: minPrice}
-            );
-        }
-
-        if (maxPrice) {
-            query.andWhere(
-                'product.price <= :maxPrice',
-                {maxPrice: maxPrice}
-            );
+        if (price === 'true') {
+            query.andWhere('product.price IS NOT NULL');
+        } else if (price === 'false') {
+            query.andWhere('product.price IS NULL');
         }
 
         query
