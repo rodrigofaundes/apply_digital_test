@@ -121,8 +121,7 @@ describe('ProductsService', () => {
                     page: 2,
                     name: 'apple',
                     category: 'Smartwatch',
-                    minPrice: 100,
-                    maxPrice: 300
+                    price: "true"
                 };
                 const result = await service.findAll(dto);
 
@@ -139,12 +138,7 @@ describe('ProductsService', () => {
                     {category: 'Smartwatch'}
                 );
                 expect(mockQueryBuilder.andWhere).toHaveBeenCalledWith(
-                    'product.price >= :minPrice',
-                    {minPrice: 100}
-                );
-                expect(mockQueryBuilder.andWhere).toHaveBeenCalledWith(
-                    'product.price <= :maxPrice',
-                    {maxPrice: 300}
+                    'product.price IS NOT NULL',
                 );
                 expect(mockQueryBuilder.skip).toHaveBeenCalledWith((2-1) * 5);
                 expect(mockQueryBuilder.take).toHaveBeenCalledWith(5);
