@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:17
+    container_name: apply_postgres_db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: apply_db_test
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  api:
+    build: .
+    container_name: apply_nest_api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    env_file:
+      - .env
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run start
+
+
+volumes:
+  db_data:
