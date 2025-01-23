@@ -1,4 +1,4 @@
-import { IsBoolean, IsBooleanString, IsNumberString, IsOptional } from "class-validator";
+import { IsBooleanString, IsNumberString, IsOptional } from "class-validator";
 
 export class PaginatedProductDto {
     
