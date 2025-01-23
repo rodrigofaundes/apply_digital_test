@@ -146,12 +146,12 @@ describe('ProductsService', () => {
                     'product.price <= :maxPrice',
                     {maxPrice: 300}
                 );
+                expect(mockQueryBuilder.skip).toHaveBeenCalledWith((2-1) * 5);
                 expect(mockQueryBuilder.take).toHaveBeenCalledWith(5);
-                expect(mockQueryBuilder.skip).toHaveBeenCalledWith(2 * 5);
 
                 expect(result).toEqual([
                     2,
-                    10,
+                    5,
 					10,
                     [
                         {
